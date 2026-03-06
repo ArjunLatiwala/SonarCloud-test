@@ -1,7 +1,9 @@
 package com.example.sonarqubedemo.controller;
 
 import com.example.sonarqubedemo.model.Student;
+import com.example.sonarqubedemo.model.StudentDTO;
 import com.example.sonarqubedemo.service.StudentService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +36,14 @@ public class StudentController {
 
     // POST create student
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(@RequestBody StudentDTO dto) {
         try {
+            Student student = new Student();
+            student.setName(dto.getName());
+            student.setEmail(dto.getEmail());
+            student.setAge(dto.getAge());
+            student.setCourse(dto.getCourse());
+
             Student created = studentService.createStudent(student);
             return ResponseEntity.status(HttpStatus.CREATED).body(created);
         } catch (IllegalArgumentException e) {
@@ -45,8 +53,14 @@ public class StudentController {
 
     // PUT update student
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody StudentDTO dto) {
         try {
+            Student student = new Student();
+            student.setName(dto.getName());
+            student.setEmail(dto.getEmail());
+            student.setAge(dto.getAge());
+            student.setCourse(dto.getCourse());
+
             Student updated = studentService.updateStudent(id, student);
             return ResponseEntity.ok(updated);
         } catch (IllegalArgumentException e) {

@@ -1,0 +1,5 @@
+com\example\sonarqubedemo\repository\StudentRepository.class
+com\example\sonarqubedemo\service\StudentService.class
+com\example\sonarqubedemo\controller\StudentController.class
+com\example\sonarqubedemo\model\Student.class
+com\example\sonarqubedemo\SonarqubeDemoApplication.class
